@@ -34,7 +34,6 @@ mv Human_Frends Humans_frends
 
 Screenshot 4
 
-
-Задание № 2
+Задание № 2 - Создать директорию, переместить файл туда.
 
 
