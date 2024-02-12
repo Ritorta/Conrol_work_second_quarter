@@ -53,4 +53,17 @@ sudo wget -c wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
 
 sudo wget -c wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
 
+sudo apt update
+sudo apt upgrade
+sudo apt install mysql-server
+
+mysql_secure_installation
+
+systemctl status mysql
+
 Screenshot 6
+
+Задание № 4 - Установить и удалить deb-пакет с помощью dpkg.
+
+Выполнение:
+
