@@ -51,7 +51,7 @@ Screenshot 5
 
 sudo wget -c wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
 
-sudo wget -c wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.29-1_all.deb
 
 sudo apt update
 sudo apt upgrade
@@ -66,4 +66,13 @@ Screenshot 6
 Задание № 4 - Установить и удалить deb-пакет с помощью dpkg.
 
 Выполнение:
+
+wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+
+sudo dpkg -i discord.deb 
+
+sudo dpkg -r discord
+
+Screenshot 7
+
 
