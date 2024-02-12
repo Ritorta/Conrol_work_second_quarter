@@ -24,8 +24,15 @@ Ctrl + D
 
 Screenshot 2
 
+cat Home_animals Pack_animals > Human_Frends
 
+cat Human_Frends
 
+Screenshot 3
+
+mv Human_Frends Humans_frends
+
+Screenshot 4
 
 
 Задание № 2
