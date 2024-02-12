@@ -16,6 +16,14 @@ Ctrl + D
 
 Screenshot 1
 
+cat > Pack_animals
+horse
+camel
+donkey
+Ctrl + D
+
+Screenshot 2
+
 
 
 
