@@ -36,4 +36,10 @@ Screenshot 4
 
 Задание № 2 - Создать директорию, переместить файл туда.
 
+mkdir task2
+
+mv Humans_frends task2/
+
+Screenshot 5
+
 
