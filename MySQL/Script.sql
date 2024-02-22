@@ -155,4 +155,28 @@ VALUES ('Иа', 'Оранжевый', '2014-06-15', 'вперед, стоять'
 -- Удалить таблицу "camel".
 DROP TABLE humans_friends.camel;
 
+-- Объединить таблицы "horses", и "donkeys" в одну таблицу, создаем новую таблицу "horse_and_donkey" для объединения "horse" и "donkey".
+CREATE TABLE horse_and_donkey
+(
+id INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+name VARCHAR(30),
+color VARCHAR(30),
+date_birth DATE,
+commands VARCHAR(100),
+animal_kind_id INT UNSIGNED NOT NULL,
+species_animals VARCHAR(30),
+PRIMARY KEY (id)
+);
+
+-- Вставляем данные из "horses" в таблицу "horses_and_donkeys"
+INSERT INTO horse_and_donkey (name, color, date_birth, commands, animal_kind_id, species_animals)
+SELECT name, color, date_birth, commands, animal_kind_id, 'Horse' AS species_animals
+FROM horse;
+
+
+-- Вставляем данные из "donkeys" в таблицу "horses_and_donkeys"
+INSERT INTO horse_and_donkey (name, color, date_birth, commands, animal_kind_id, species_animals)
+SELECT name, color, date_birth, commands, animal_kind_id, 'Donkey' AS species_animals
+FROM donkey;
+
 
