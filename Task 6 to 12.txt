@@ -11,3 +11,17 @@ Screenshot 9
 
 Выполнение:
 
+Проверяем что, MySQL работает
+
+sudo systemctl status mysql
+
+Проверяем актуальность версии командой
+
+sudo mysqladmin -u root -p version
+
+Запускаем MySQL и создаём базу данных "Друзья человека"
+
+mysql -u root -p
+
+Screenshot 10
+
