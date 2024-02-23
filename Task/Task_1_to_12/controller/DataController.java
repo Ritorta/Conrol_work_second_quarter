@@ -2,12 +2,22 @@ package Task.Task_1_to_12.controller;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
+
+import Task.Task_1_to_12.data.Camel;
+import Task.Task_1_to_12.data.Cat;
+import Task.Task_1_to_12.data.Dog;
+import Task.Task_1_to_12.data.Donkey;
+import Task.Task_1_to_12.data.Hamster;
+import Task.Task_1_to_12.data.HomeAnimals;
+import Task.Task_1_to_12.data.Horse;
+import Task.Task_1_to_12.data.PackAnimals;
 import Task.Task_1_to_12.service.ServiceDatabase;
 
 public class DataController {
     
     private ServiceDatabase servicedatabase;
     private Scanner scanner;
+    
 
     public DataController(ServiceDatabase servicedatabase){
         this.servicedatabase = servicedatabase;
@@ -18,17 +28,17 @@ public class DataController {
         while(true) {
             try {
                 System.out.println("Menu: ");
-                System.out.println("1. Show all animals in the registry.");
-                System.out.println("2. Add new animal.");
-                System.out.println("3. Add new command to animal.");
-                System.out.println("4. Show list of commands for animal.");
-                System.out.println("5. Exit.");
+                System.out.println("1. Show all animals in the registry");
+                System.out.println("2. Add new animal");
+                System.out.println("3. Add new command to animal");
+                System.out.println("4. Show list of commands for animal");
+                System.out.println("5. Exit");
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
                 switch (choice) {
                     case 1: 
-                    case 2: 
+                    case 2: addNewAnimal();
                     case 3: 
                     case 4:
                     case 5: System.out.println("Goodbye"); 
@@ -40,8 +50,76 @@ public class DataController {
 				scanner.nextLine();
             }
         }
-    
     }
 
+    private void addNewAnimal() {
+        System.out.println("Enter type animal, 1 - Home Animals, 2 - Pack Animals");
+        String type = scanner.nextLine();
+        
+        if(type.equals("1")){
+        System.out.println("Enter name animal:");
+		String name = scanner.nextLine();
+        System.out.println("Enter command animal:");
+		String color = scanner.nextLine();
+        System.out.println("Enter command animal:");
+		String date_birth = scanner.nextLine();
+		System.out.println("Enter command animal:");
+		String commands = scanner.nextLine();
 
+		System.out.println("Select animals to add: ");
+		System.out.println("1. Dog");
+		System.out.println("2. Cat");
+		System.out.println("3. Hamster");
+		int animalClass = scanner.nextInt();
+		scanner.nextLine();
+
+		HomeAnimals homeAnimal;
+		switch (animalClass) {
+			case 1 -> homeAnimal = new Dog(name, color, commands, null, commands);
+			case 2 -> homeAnimal = new Cat(name, color, date_birth, null, commands);
+			case 3 -> homeAnimal = new Hamster(name, color, date_birth, null, commands);
+			default -> {
+				System.out.println("Error incorect select");
+				return;
+			}
+        }
+
+        servicedatabase.addAnimal(homeAnimal);
+		System.out.println("Animal added to the database");
+
+        } else if(type.equals("2")){
+        System.out.println("Enter name animal:");
+		String name = scanner.nextLine();
+        System.out.println("Enter command animal:");
+		String color = scanner.nextLine();
+        System.out.println("Enter command animal:");
+		String date_birth = scanner.nextLine();
+		System.out.println("Enter command animal:");
+		String commands = scanner.nextLine();
+
+		System.out.println("Select animals to add: ");
+		System.out.println("4. Donkey");
+		System.out.println("5. Horse");
+        System.out.println("6. Horse");
+		int animalClass = scanner.nextInt();
+		scanner.nextLine();
+        PackAnimals packAnimal;
+		switch (animalClass) {
+
+            case 4 -> packAnimal = new Donkey(name, color, date_birth, null, commands);
+			case 5 -> packAnimal = new Horse(name, color, date_birth, null, commands);
+            case 6 -> packAnimal = new Camel(name, color, date_birth, null, commands);
+            default -> {
+				System.out.println("Error incorect select");
+				return;
+			}
+		}
+
+		servicedatabase.addAnimal(packAnimal);
+		System.out.println("Animals complete to add database");
+        } else {
+        System.out.println("Error incorrect select type of animal");
+        }
+
+    }
 }

@@ -1,7 +1,6 @@
 package Task.Task_1_to_12.data;
 
 import java.sql.Date;
-import java.util.List;
 
 public abstract class PackAnimals extends Animal {
 

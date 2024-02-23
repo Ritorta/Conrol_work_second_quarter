@@ -6,6 +6,7 @@ public class Animal {
 
     public Animal(String animal_type) {
         this.animal_type = animal_type;
+       
     }
 
     public String getAnimal_type() {
