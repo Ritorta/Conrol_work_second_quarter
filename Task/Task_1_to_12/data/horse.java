@@ -4,13 +4,14 @@ import java.sql.Date;
 import java.util.List;
 
 public class Horse extends PackAnimals {
-    public Horse(int id, String animal_type, String name, String color, Date date_birth, List<String> commands) {
-        super(id, animal_type, name, color, date_birth, commands);
+    
+    public Horse(String animal_type, String name, String color, Date date_birth, String commands) {
+        super(animal_type, name, color, date_birth, commands);
     }
 
     @Override
     public String toString() {
-        return "Horse Id: " + id + " Animal type: " + animal_type + " Name: " + name + " Color: " + color + 
+        return "Horse Id: " + " Animal type: " + animal_type + " Name: " + name + " Color: " + color + 
         " Date birthsday: " + date_birth + " Commands: " + commands;
     }  
 }

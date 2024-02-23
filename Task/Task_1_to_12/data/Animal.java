@@ -1,20 +1,11 @@
 package Task.Task_1_to_12.data;
 
-public class Animals {
-    protected int id;
+public class Animal {
+    
     protected String animal_type;
 
-    public Animals(int id, String animal_type) {
-        this.id = id;
+    public Animal(String animal_type) {
         this.animal_type = animal_type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getAnimal_type() {
