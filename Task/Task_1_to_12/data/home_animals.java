@@ -3,15 +3,13 @@ package Task.Task_1_to_12.data;
 import java.sql.Date;
 import java.util.List;
 
-public abstract class home_animals extends animals
-{
+public abstract class home_animals extends animals {
     protected String name;
     protected String color;
     protected Date date_birth;
     protected List<String> commands;
 
-    public home_animals(int id, String animal_type, String name, String color, Date date_birth, List<String> commands) 
-    {
+    public home_animals(int id, String animal_type, String name, String color, Date date_birth, List<String> commands) {
         super(id, animal_type);
         this.name = name;
         this.color = color;
@@ -50,6 +48,4 @@ public abstract class home_animals extends animals
     public void setCommands(List<String> commands) {
         this.commands = commands;
     }
-
-   
 }

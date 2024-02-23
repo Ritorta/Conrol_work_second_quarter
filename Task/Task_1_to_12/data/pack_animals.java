@@ -10,40 +10,43 @@ public abstract class pack_animals extends animals {
     protected Date date_birth;
     protected List<String> commands;
     
-    public pack_animals(int id, String animal_type, String name, String color, Date date_birth, List<String> commands) 
-    {
+    public pack_animals(int id, String animal_type, String name, String color, Date date_birth, List<String> commands) {
         super(id, animal_type);
         this.name = name;
         this.color = color;
         this.date_birth = date_birth;
         this.commands = commands;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getColor() {
         return color;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
+
     public Date getDate_birth() {
         return date_birth;
     }
+
     public void setDate_birth(Date date_birth) {
         this.date_birth = date_birth;
     }
+
     public List<String> getCommands() {
         return commands;
     }
+
     public void setCommands(List<String> commands) {
         this.commands = commands;
     }
-    
-
-    
-
 }
