@@ -12,12 +12,16 @@ import Task.Task_13_to_15.data.Horse;
 import Task.Task_13_to_15.data.PackAnimals;
 import Task.Task_13_to_15.service.ServiceDatabase;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.InputMismatchException;
 
 public class DataController {
     
     private ServiceDatabase servicedatabase;
     private Scanner scanner;
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+    private static Date date_birth = null;
     
 
     public DataController(ServiceDatabase servicedatabase){
@@ -38,13 +42,14 @@ public class DataController {
                 scanner.nextLine();
 
                 switch (choice) {
-                    case 1: servicedatabase.displayAllAnimals();
-                    case 2: addNewAnimal();
-                    case 3: NewCommand();
-                    case 4: displayAnimalCommands();
-                    case 5: System.out.println("Goodbye"); 
+                    case 1 -> servicedatabase.displayAllAnimals();
+                    case 2 -> addNewAnimal();
+                    case 3 -> NewCommand();
+                    case 4 -> displayAnimalCommands();
+                    case 5 -> { System.out.println("Goodbye"); 
                         return;
-                    default: System.out.println("Error: Incorrect choice");
+                    }
+                    default -> System.out.println("Error: Incorrect choice");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error: Incorrect enter");
@@ -59,13 +64,13 @@ public class DataController {
         
         if(type.equals("1")){
         System.out.println("Enter id animal:");
-		String id = scanner.nextLine();
+		int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter name animal:");
 		String name = scanner.nextLine();
         System.out.println("Enter color animal:");
 		String color = scanner.nextLine();
         System.out.println("Enter date_birth animal:");
-		String date_birth = scanner.nextLine();
+		date_birth = parseDate(scanner.nextLine());
 		System.out.println("Enter command animal:");
 		String commands = scanner.nextLine();
 
@@ -78,9 +83,9 @@ public class DataController {
 
 		HomeAnimals homeAnimal;
 		switch (animalClass) {
-			case 1 -> homeAnimal = new Dog(id, name, color, commands, null, commands);
-			case 2 -> homeAnimal = new Cat(id, name, color, date_birth, null, commands);
-			case 3 -> homeAnimal = new Hamster(id, name, color, date_birth, null, commands);
+			case 1 -> homeAnimal = new Dog(id, name, color, date_birth, commands);
+			case 2 -> homeAnimal = new Cat(id, name, color, date_birth, commands);
+			case 3 -> homeAnimal = new Hamster(id, name, color, date_birth, commands);
 			default -> {
 				System.out.println("Error incorect select");
 				return;
@@ -92,13 +97,13 @@ public class DataController {
 
         } else if(type.equals("2")){
         System.out.println("Enter id animal:");
-		String id = scanner.nextLine();
+		int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter name animal:");
 		String name = scanner.nextLine();
         System.out.println("Enter color animal:");
 		String color = scanner.nextLine();
         System.out.println("Enter date_birth animal:");
-		String date_birth = scanner.nextLine();
+		date_birth = parseDate(scanner.nextLine());
 		System.out.println("Enter command animal:");
 		String commands = scanner.nextLine();
 
@@ -111,9 +116,9 @@ public class DataController {
         PackAnimals packAnimal;
 		switch (animalClass) {
 
-            case 4 -> packAnimal = new Donkey(id, name, color, date_birth, null, commands);
-			case 5 -> packAnimal = new Horse(id, name, color, date_birth, null, commands);
-            case 6 -> packAnimal = new Camel(id, name, color, date_birth, null, commands);
+            case 4 -> packAnimal = new Donkey(id, name, color, date_birth, commands);
+			case 5 -> packAnimal = new Horse(id, name, color, date_birth, commands);
+            case 6 -> packAnimal = new Camel(id, name, color, date_birth, commands);
             default -> {
 				System.out.println("Error incorect select");
 				return;
@@ -130,7 +135,7 @@ public class DataController {
 
     private void displayAnimalCommands() {
 		System.out.println("Enter id animals: ");
-		String id = scanner.nextLine();
+		int id = Integer.parseInt(scanner.nextLine());
 
         ServiceDatabase serviceDatabase = new ServiceDatabase();
 		serviceDatabase.displayAnimalCommands(id);
@@ -138,11 +143,21 @@ public class DataController {
 
     private void NewCommand() {
 		System.out.println("Enter id animal:");
-		String id = scanner.nextLine();
+		int id = Integer.parseInt(scanner.nextLine());
 		System.out.println("Enter new commands:");
 		String command = scanner.nextLine();
 
 		servicedatabase.NewCommand(id, command);
 		System.out.println("Commands add sucess.");
 	}
+
+    private static Date parseDate(String date) {
+        try {
+            java.util.Date utilDate = sdf.parse(date);
+            return new java.sql.Date(utilDate.getTime());
+        } catch (Exception e) {
+            System.out.println("Error incorrect date format");
+            return null;
+        }
+    }
 }

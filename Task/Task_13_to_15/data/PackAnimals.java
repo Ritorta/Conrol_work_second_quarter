@@ -1,6 +1,6 @@
 package Task.Task_13_to_15.data;
 
-import java.sql.Date;
+import java.util.Date;
 
 public abstract class PackAnimals extends Animal {
 
@@ -9,8 +9,8 @@ public abstract class PackAnimals extends Animal {
     protected Date date_birth;
     protected String commands;
     
-    public PackAnimals(String id, String animal_type, String name, String color, Date date_birth, String commands) {
-        super(id, animal_type);
+    public PackAnimals(int id, String name, String color, Date date_birth, String commands) {
+        super(id);
         this.name = name;
         this.color = color;
         this.date_birth = date_birth;

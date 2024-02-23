@@ -1,11 +1,11 @@
 package Task.Task_13_to_15.data;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Dog extends HomeAnimals {
     
-    public Dog(String id, String animal_type, String name, String color, Date date_birth, String commands) {
-        super(id, animal_type, name, color, date_birth, commands);
+    public Dog(int id, String name, String color, Date date_birth, String commands) {
+        super(id, name, color, date_birth, commands);
     }
 
     @Override
