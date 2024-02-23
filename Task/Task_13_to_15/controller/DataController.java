@@ -1,17 +1,18 @@
-package Task.Task_1_to_12.controller;
+package Task.Task_12_to_15.controller;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
-import Task.Task_1_to_12.data.Camel;
-import Task.Task_1_to_12.data.Cat;
-import Task.Task_1_to_12.data.Dog;
-import Task.Task_1_to_12.data.Donkey;
-import Task.Task_1_to_12.data.Hamster;
-import Task.Task_1_to_12.data.HomeAnimals;
-import Task.Task_1_to_12.data.Horse;
-import Task.Task_1_to_12.data.PackAnimals;
-import Task.Task_1_to_12.service.ServiceDatabase;
+import Task.Task_12_to_15.data.Camel;
+import Task.Task_12_to_15.data.Cat;
+import Task.Task_12_to_15.data.Dog;
+import Task.Task_12_to_15.data.Donkey;
+import Task.Task_12_to_15.data.Hamster;
+import Task.Task_12_to_15.data.HomeAnimals;
+import Task.Task_12_to_15.data.Horse;
+import Task.Task_12_to_15.data.PackAnimals;
+import Task.Task_12_to_15.service.ServiceDatabase;
+
+import java.util.InputMismatchException;
 
 public class DataController {
     
@@ -57,13 +58,13 @@ public class DataController {
         String type = scanner.nextLine();
         
         if(type.equals("1")){
-        System.out.println("Enter name animal:");
+        System.out.println("Enter id animal:");
 		String id = scanner.nextLine();
         System.out.println("Enter name animal:");
 		String name = scanner.nextLine();
-        System.out.println("Enter command animal:");
+        System.out.println("Enter color animal:");
 		String color = scanner.nextLine();
-        System.out.println("Enter command animal:");
+        System.out.println("Enter date_birth animal:");
 		String date_birth = scanner.nextLine();
 		System.out.println("Enter command animal:");
 		String commands = scanner.nextLine();
@@ -90,13 +91,13 @@ public class DataController {
 		System.out.println("Animal added to the database");
 
         } else if(type.equals("2")){
-        System.out.println("Enter name animal:");
+        System.out.println("Enter id animal:");
 		String id = scanner.nextLine();
         System.out.println("Enter name animal:");
 		String name = scanner.nextLine();
-        System.out.println("Enter command animal:");
+        System.out.println("Enter color animal:");
 		String color = scanner.nextLine();
-        System.out.println("Enter command animal:");
+        System.out.println("Enter date_birth animal:");
 		String date_birth = scanner.nextLine();
 		System.out.println("Enter command animal:");
 		String commands = scanner.nextLine();
@@ -128,7 +129,7 @@ public class DataController {
     }
 
     private void displayAnimalCommands() {
-		System.out.println("Enter name animals: ");
+		System.out.println("Enter id animals: ");
 		String id = scanner.nextLine();
 
         ServiceDatabase serviceDatabase = new ServiceDatabase();

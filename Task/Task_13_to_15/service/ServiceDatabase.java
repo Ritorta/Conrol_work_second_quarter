@@ -1,8 +1,4 @@
-package Task.Task_1_to_12.service;
-import Task.Task_1_to_12.data.Animal;
-import Task.Task_1_to_12.data.HomeAnimals;
-import Task.Task_1_to_12.data.PackAnimals;
-
+package Task.Task_12_to_15.service;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,11 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import Task.Task_12_to_15.data.Animal;
+import Task.Task_12_to_15.data.HomeAnimals;
+import Task.Task_12_to_15.data.PackAnimals;
+
 
 public class ServiceDatabase {
 
     private List<Animal> animals;
-    private static String fileParh = "data/Database.txt";
+    private static final String filePath = "Task/data/Database.txt";
 
     public ServiceDatabase(){
         animals = new ArrayList<>();
@@ -24,7 +24,7 @@ public class ServiceDatabase {
     }
 
     private void saveDatabase(){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileParh))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for(Animal animal : animals) {
                 String className = animal.getAnimal_type();
                 
@@ -64,7 +64,7 @@ public class ServiceDatabase {
     
     public void displayAllAnimals() {
 		try {
-			File file = new File(fileParh);
+			File file = new File(filePath);
 			Scanner fileScanner = new Scanner(file);
 
 			while (fileScanner.hasNextLine()) {
