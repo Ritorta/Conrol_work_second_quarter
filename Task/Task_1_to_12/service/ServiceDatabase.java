@@ -4,10 +4,13 @@ import Task.Task_1_to_12.data.HomeAnimals;
 import Task.Task_1_to_12.data.PackAnimals;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class ServiceDatabase {
@@ -59,4 +62,19 @@ public class ServiceDatabase {
         System.out.println("Amimals id " + id + " not found.");
     }
     
+    public void displayAllAnimals() {
+		try {
+			File file = new File(fileParh);
+			Scanner fileScanner = new Scanner(file);
+
+			while (fileScanner.hasNextLine()) {
+				String animalData = fileScanner.nextLine();
+				System.out.println(animalData);
+			}
+
+			fileScanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("DataBase file not found.");
+		}
+	}
 }

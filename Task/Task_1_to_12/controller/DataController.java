@@ -37,7 +37,7 @@ public class DataController {
                 scanner.nextLine();
 
                 switch (choice) {
-                    case 1: 
+                    case 1: servicedatabase.displayAllAnimals();
                     case 2: addNewAnimal();
                     case 3: 
                     case 4: displayAnimalCommands();
@@ -134,4 +134,6 @@ public class DataController {
         ServiceDatabase serviceDatabase = new ServiceDatabase();
 		serviceDatabase.displayAnimalCommands(id);
 	}
+
+    
 }
