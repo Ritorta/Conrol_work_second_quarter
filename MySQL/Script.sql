@@ -179,4 +179,39 @@ INSERT INTO horse_and_donkey (name, color, date_birth, commands, animal_kind_id,
 SELECT name, color, date_birth, commands, animal_kind_id, 'Donkey' AS species_animals
 FROM donkey;
 
+-- Создаем новую таблицу "young_animals"
+CREATE TABLE young_animals 
+(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30),
+species_animals VARCHAR(30),
+age_months INT
+);
+
+-- Вставляем данные из таблиц 'cat', `dog`, `donkey`, `hamster`, и `horse` в таблицу `young_animals`.
+INSERT INTO young_animals (name, species_animals, age_months)
+SELECT name, 'Cat' AS species_animals, TIMESTAMPDIFF(MONTH, date_birth, CURDATE()) AS age_months
+FROM cat
+WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND date_birth >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
+
+INSERT INTO young_animals (name, species_animals, age_months)
+SELECT name, 'Dog' AS species_animals, TIMESTAMPDIFF(MONTH, date_birth, CURDATE()) AS age_months
+FROM dog
+WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND date_birth >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
+
+INSERT INTO young_animals (name, species_animals, age_months)
+SELECT name, 'Hamster' AS species_animals, TIMESTAMPDIFF(MONTH, date_birth, CURDATE()) AS age_months
+FROM hamster
+WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND date_birth >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
+
+INSERT INTO young_animals (name, species_animals, age_months)
+SELECT name, 'Horse' AS species_animals, TIMESTAMPDIFF(MONTH, date_birth, CURDATE()) AS age_months
+FROM horse
+WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND date_birth >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
+
+INSERT INTO young_animals (name, species_animals, age_months)
+SELECT name, 'Donkey' AS species_animals, TIMESTAMPDIFF(MONTH, date_birth, CURDATE()) AS age_months
+FROM donkey
+WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND date_birth >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
+
 
