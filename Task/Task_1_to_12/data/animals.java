@@ -5,6 +5,12 @@ public class animals
     private int id;
     private String animal_type;
 
+    public animals(int id, String animal_type) 
+    {
+        this.id = id;
+        this.animal_type = animal_type;
+    }
+
     public int getId() 
     {
         return id;
@@ -19,7 +25,7 @@ public class animals
     {
         return animal_type;
     }
-    
+
     public void setAnimal_type(String animal_type) 
     {
         this.animal_type = animal_type;
