@@ -27,7 +27,7 @@ import Task.Task_13_to_15.data.PackAnimals;
 
 public class ServiceDatabase {
 
-    private List<Animal> animals;
+    private final List<Animal> animals;
     private static final String filePath = "Task/Task_13_to_15/data/Database.txt";
     
 
@@ -37,31 +37,59 @@ public class ServiceDatabase {
         
     }
 
-    private void saveDatabase(){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for(Animal animal : animals) {
-                String className = animal.getClass().getSimpleName();
-                int id = animal.getId();
+    // private void saveDatabase(){
+    //     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+    //         for(Animal animal : animals) {
+    //             int id = animal.getId();
                 
-                if (animal instanceof HomeAnimals) {
-                    HomeAnimals homeAnimal = (HomeAnimals) animal;
-                    String line = "HomeAnimal id: " + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + homeAnimal.getDate_birth() + ", " +
-                    String.join(",", homeAnimal.getCommands());
-                    writer.write(line);
-                } else if (animal instanceof PackAnimals) {
-                    PackAnimals packAnimal = (PackAnimals) animal;
-                    String line = "PackAnimal," + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + packAnimal.getDate_birth() + ", " +
-                    String.join(",", packAnimal.getCommands());
-                    writer.write(line);
-                } else {
-                    System.out.println("Incorrect animal type: " + className);
-                }  
-            }
-        } catch (IOException e) {
-            System.out.println("Error save Database: " + e.getMessage());
-        }
-    }
+    //             if (animal instanceof HomeAnimals) {
+    //                 HomeAnimals homeAnimal = (HomeAnimals) animal;
+    //                 String line = "HomeAnimal id: " + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + homeAnimal.getDate_birth() + ", " +
+    //                 String.join(",", homeAnimal.getCommands());
+    //                 writer.write(line);
+	// 				writer.newLine();
+    //             } else if (animal instanceof PackAnimals) {
+    //                 PackAnimals packAnimal = (PackAnimals) animal;
+    //                 String line = "PackAnimal," + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + packAnimal.getDate_birth() + ", " +
+    //                 String.join(",", packAnimal.getCommands());
+    //                 writer.write(line);
+	// 				writer.newLine();
+    //             } else {
+    //                 System.out.println("Incorrect animal type: " + id);
+    //             }  
+    //         }
+    //     } catch (IOException e) {
+    //         System.out.println("Error save Database: " + e.getMessage());
+    //     }
+    // }
     
+	private void saveDatabase() {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+			for (Animal animal : animals) {
+				int id = animal.getId();
+	
+				if (animal instanceof HomeAnimals) {
+					HomeAnimals homeAnimal = (HomeAnimals) animal;
+					String line = "HomeAnimal," + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + homeAnimal.getDate_birth() + ", " +
+							String.join(",", homeAnimal.getCommands());
+					writer.write(line);
+					writer.newLine();
+				} else if (animal instanceof PackAnimals) {
+					PackAnimals packAnimal = (PackAnimals) animal;
+					String line = "PackAnimal," + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + packAnimal.getDate_birth() + ", " +
+							String.join(",", packAnimal.getCommands());
+					writer.write(line);
+					writer.newLine();
+				} else {
+					System.out.println("Incorrect animal type: " + id);
+				}
+			}
+			System.out.println("Database save complete.");
+		} catch (IOException e) {
+			System.out.println("Error saving database: " + e.getMessage());
+		}
+	}
+
     private void loadDatabase() {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 			String line;

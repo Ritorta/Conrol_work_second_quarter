@@ -110,7 +110,7 @@ public class DataController {
 		System.out.println("Select animals to add: ");
 		System.out.println("4. Donkey");
 		System.out.println("5. Horse");
-        System.out.println("6. Horse");
+        System.out.println("6. Camel");
 		int animalClass = scanner.nextInt();
 		scanner.nextLine();
         PackAnimals packAnimal;
