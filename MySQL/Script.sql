@@ -214,4 +214,35 @@ SELECT name, 'Donkey' AS species_animals, TIMESTAMPDIFF(MONTH, date_birth, CURDA
 FROM donkey
 WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 1 YEAR) AND date_birth >= DATE_SUB(CURDATE(), INTERVAL 3 YEAR);
 
+-- Создаем новую таблицу "all_animals".
+CREATE TABLE all_animals
+(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30),
+color VARCHAR(30),
+date_birth DATE,
+commands VARCHAR(100),
+animal_kind_id INT,
+species_animals VARCHAR(30),
+FOREIGN KEY (animal_kind_id) REFERENCES home_animals(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
+-- Объединяем таблицы с помощью UNION.
+INSERT INTO all_animals (name, color, date_birth, commands, animal_kind_id, species_animals)
+SELECT name, color, date_birth, commands, animal_kind_id, 'Cat' AS species_animals
+FROM cat
+UNION
+SELECT name, color, date_birth, commands, animal_kind_id, 'Dog' AS species_animals
+FROM dog
+UNION
+SELECT name, color, date_birth, commands, animal_kind_id, 'Hamster' AS species_animals
+FROM hamster
+UNION
+SELECT name, color, date_birth, commands, animal_kind_id, 'Horse' AS species_animals
+FROM horse
+UNION
+SELECT name, color, date_birth, commands, animal_kind_id, 'Donkey' AS species_animals
+FROM donkey;
+
+-- Выводим финальную таблицу "all_animals".
+SELECT * FROM all_animals;
