@@ -1,18 +1,17 @@
 package Task.Task_1_to_12.controller;
 
 import java.util.Scanner;
-
-import Task.Task_1_to_12.service.Database;
-
 import java.util.InputMismatchException;
+
+import Task.Task_1_to_12.service.ServiceDatabase;
 
 public class DataController {
 
-    private Database database;
+    private ServiceDatabase servicedatabase;
     private Scanner scanner;
 
-    public DataController(Database database){
-        this.database = database;
+    public DataController(ServiceDatabase servicedatabase){
+        this.servicedatabase = servicedatabase;
         scanner = new Scanner(System.in);
     }
 
