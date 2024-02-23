@@ -9,4 +9,11 @@ public class camel extends pack_animals
     {
         super(id, animal_type, name, color, date_birth, commands);
     }
+
+    @Override
+    public String toString() {
+        return "Camel Id: " + id + " Animal type: " + animal_type + " Name: " + name + " Color: " + color + 
+        " Date birthsday: " + date_birth + " Commands: " + commands;
+    }
+    
 }

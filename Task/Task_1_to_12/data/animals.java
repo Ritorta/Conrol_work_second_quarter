@@ -2,8 +2,8 @@ package Task.Task_1_to_12.data;
 
 public class animals 
 {
-    private int id;
-    private String animal_type;
+    protected int id;
+    protected String animal_type;
 
     public animals(int id, String animal_type) 
     {

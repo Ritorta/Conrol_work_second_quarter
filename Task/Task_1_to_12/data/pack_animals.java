@@ -5,10 +5,10 @@ import java.util.List;
 
 public abstract class pack_animals extends animals {
 
-    private String name;
-    private String color;
-    private Date date_birth;
-    private List<String> commands;
+    protected String name;
+    protected String color;
+    protected Date date_birth;
+    protected List<String> commands;
     
     public pack_animals(int id, String animal_type, String name, String color, Date date_birth, List<String> commands) 
     {
