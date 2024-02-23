@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ServiceDatabase {
 
     private List<Animal> animals;
-    private String fileParh = "data/Database.txt";
+    private static String fileParh = "data/Database.txt";
 
     public ServiceDatabase(){
         animals = new ArrayList<>();
@@ -48,5 +49,14 @@ public class ServiceDatabase {
         saveDatabase();
     }
 
+    public void displayAnimalCommands(String id) {
+        for (Animal animal : animals) {
+        if (animal.getId().equals(id)) {
+                animal.displayCommands();
+                return;
+            }
+        }
+        System.out.println("Amimals id " + id + " not found.");
+    }
     
 }

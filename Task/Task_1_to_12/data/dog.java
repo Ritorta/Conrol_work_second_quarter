@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class Dog extends HomeAnimals {
     
-    public Dog(String animal_type, String name, String color, Date date_birth, String commands) {
-        super(animal_type, name, color, date_birth, commands);
+    public Dog(String id, String animal_type, String name, String color, Date date_birth, String commands) {
+        super(id, animal_type, name, color, date_birth, commands);
     }
 
     @Override
@@ -13,4 +13,9 @@ public class Dog extends HomeAnimals {
         return "Dog: " + " Animal type: " + animal_type + " Name: " + name + " Color: " + color + 
         " Date birthsday: " + date_birth + " Commands: " + commands;
     }
+
+    @Override
+	public void displayCommands() {
+		System.out.println("Commands for Dog " + getName() + ": " + getCommands());
+	}
 }

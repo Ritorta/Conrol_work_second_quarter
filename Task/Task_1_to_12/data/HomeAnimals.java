@@ -9,8 +9,8 @@ public abstract class HomeAnimals extends Animal {
     protected Date date_birth;
     protected String commands;
 
-    public HomeAnimals(String animal_type, String name, String color, Date date_birth, String commands) {
-        super(animal_type);
+    public HomeAnimals(String id, String animal_type, String name, String color, Date date_birth, String commands) {
+        super(id, animal_type);
         this.name = name;
         this.color = color;
         this.date_birth = date_birth;

@@ -40,7 +40,7 @@ public class DataController {
                     case 1: 
                     case 2: addNewAnimal();
                     case 3: 
-                    case 4:
+                    case 4: displayAnimalCommands();
                     case 5: System.out.println("Goodbye"); 
                         return;
                     default: System.out.println("Error: Incorrect choice");
@@ -57,6 +57,8 @@ public class DataController {
         String type = scanner.nextLine();
         
         if(type.equals("1")){
+        System.out.println("Enter name animal:");
+		String id = scanner.nextLine();
         System.out.println("Enter name animal:");
 		String name = scanner.nextLine();
         System.out.println("Enter command animal:");
@@ -75,9 +77,9 @@ public class DataController {
 
 		HomeAnimals homeAnimal;
 		switch (animalClass) {
-			case 1 -> homeAnimal = new Dog(name, color, commands, null, commands);
-			case 2 -> homeAnimal = new Cat(name, color, date_birth, null, commands);
-			case 3 -> homeAnimal = new Hamster(name, color, date_birth, null, commands);
+			case 1 -> homeAnimal = new Dog(id, name, color, commands, null, commands);
+			case 2 -> homeAnimal = new Cat(id, name, color, date_birth, null, commands);
+			case 3 -> homeAnimal = new Hamster(id, name, color, date_birth, null, commands);
 			default -> {
 				System.out.println("Error incorect select");
 				return;
@@ -88,6 +90,8 @@ public class DataController {
 		System.out.println("Animal added to the database");
 
         } else if(type.equals("2")){
+        System.out.println("Enter name animal:");
+		String id = scanner.nextLine();
         System.out.println("Enter name animal:");
 		String name = scanner.nextLine();
         System.out.println("Enter command animal:");
@@ -106,9 +110,9 @@ public class DataController {
         PackAnimals packAnimal;
 		switch (animalClass) {
 
-            case 4 -> packAnimal = new Donkey(name, color, date_birth, null, commands);
-			case 5 -> packAnimal = new Horse(name, color, date_birth, null, commands);
-            case 6 -> packAnimal = new Camel(name, color, date_birth, null, commands);
+            case 4 -> packAnimal = new Donkey(id, name, color, date_birth, null, commands);
+			case 5 -> packAnimal = new Horse(id, name, color, date_birth, null, commands);
+            case 6 -> packAnimal = new Camel(id, name, color, date_birth, null, commands);
             default -> {
 				System.out.println("Error incorect select");
 				return;
@@ -122,4 +126,12 @@ public class DataController {
         }
 
     }
+
+    private void displayAnimalCommands() {
+		System.out.println("Enter name animals: ");
+		String id = scanner.nextLine();
+
+        ServiceDatabase serviceDatabase = new ServiceDatabase();
+		serviceDatabase.displayAnimalCommands(id);
+	}
 }
