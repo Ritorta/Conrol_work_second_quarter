@@ -18,4 +18,10 @@ public class Horse extends PackAnimals {
 	public void displayCommands() {
 		System.out.println("Commands for Horse " + getName() + ": " + getCommands());
 	}
+
+    @Override
+    public void NewCommand(String command) {
+		String updatedCommads = getCommands() + "," + command;
+		setCommands(updatedCommads);
+	}
 }

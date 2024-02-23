@@ -77,4 +77,22 @@ public class ServiceDatabase {
 			System.out.println("DataBase file not found.");
 		}
 	}
+
+    public void NewCommand(String id, String command) {
+		for (Animal animal : animals) {
+			if (animal.getId().equals(id)) {
+				String[] commands = command.split(",");
+				for (int i = 0; i < commands.length; i++) {
+					String trimmedCommand = commands[i].trim();
+					commands[i] = trimmedCommand;
+				}
+				animal.NewCommand(command);
+				saveDatabase();
+				System.out.println("Commands add sucess.");
+				return;
+			}
+		}
+		System.out.println("Animals id " + id + " not found.");
+	}
+
 }

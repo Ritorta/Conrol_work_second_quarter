@@ -18,4 +18,10 @@ public class Dog extends HomeAnimals {
 	public void displayCommands() {
 		System.out.println("Commands for Dog " + getName() + ": " + getCommands());
 	}
+
+    @Override
+    public void NewCommand(String command) {
+		String updatedCommads = getCommands() + "," + command;
+		setCommands(updatedCommads);
+	}
 }

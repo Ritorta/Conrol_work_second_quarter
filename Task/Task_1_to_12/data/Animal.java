@@ -26,4 +26,6 @@ public abstract class Animal {
     }
 
     public abstract void displayCommands();
+
+    public abstract void NewCommand(String command);
 }

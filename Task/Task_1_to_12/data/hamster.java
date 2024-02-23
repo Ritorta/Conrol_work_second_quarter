@@ -19,4 +19,9 @@ public class Hamster extends HomeAnimals {
 		System.out.println("Commands for Hamster " + getName() + ": " + getCommands());
 	}
     
+    @Override
+    public void NewCommand(String command) {
+		String updatedCommads = getCommands() + "," + command;
+		setCommands(updatedCommads);
+	}
 }

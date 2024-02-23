@@ -18,4 +18,10 @@ public class Donkey extends PackAnimals {
 	public void displayCommands() {
 		System.out.println("Commands for Donkey " + getName() + ": " + getCommands());
 	}
+
+    @Override
+    public void NewCommand(String command) {
+		String updatedCommads = getCommands() + "," + command;
+		setCommands(updatedCommads);
+	}
 }

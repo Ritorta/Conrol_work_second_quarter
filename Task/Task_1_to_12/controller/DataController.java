@@ -39,7 +39,7 @@ public class DataController {
                 switch (choice) {
                     case 1: servicedatabase.displayAllAnimals();
                     case 2: addNewAnimal();
-                    case 3: 
+                    case 3: NewCommand();
                     case 4: displayAnimalCommands();
                     case 5: System.out.println("Goodbye"); 
                         return;
@@ -135,5 +135,13 @@ public class DataController {
 		serviceDatabase.displayAnimalCommands(id);
 	}
 
-    
+    private void NewCommand() {
+		System.out.println("Enter id animal:");
+		String id = scanner.nextLine();
+		System.out.println("Enter new commands:");
+		String command = scanner.nextLine();
+
+		servicedatabase.NewCommand(id, command);
+		System.out.println("Commands add sucess.");
+	}
 }
