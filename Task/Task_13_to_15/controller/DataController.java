@@ -8,6 +8,7 @@ import Task.Task_13_to_15.data.Hamster;
 import Task.Task_13_to_15.data.HomeAnimals;
 import Task.Task_13_to_15.data.Horse;
 import Task.Task_13_to_15.data.PackAnimals;
+import Task.Task_13_to_15.service.ServiceCounter;
 import Task.Task_13_to_15.service.ServiceDatabase;
 
 import java.util.Scanner;
@@ -57,6 +58,7 @@ public class DataController {
     }
 
     private void addNewAnimal() {
+        try(ServiceCounter count = new ServiceCounter()) {
         System.out.println("Enter type animal, 1 - Home Animals, 2 - Pack Animals");
         String type = scanner.nextLine();
         
@@ -79,19 +81,24 @@ public class DataController {
             int animalClass = scanner.nextInt();
             scanner.nextLine();
 
-		HomeAnimals homeAnimal;
-		switch (animalClass) {
+		    HomeAnimals homeAnimal;
+		    switch (animalClass) {
 			case 1 -> homeAnimal = new Dog(id, name, color, date_birth, commands);
 			case 2 -> homeAnimal = new Cat(id, name, color, date_birth, commands);
 			case 3 -> homeAnimal = new Hamster(id, name, color, date_birth, commands);
 			default -> {
 				System.out.println("Error incorect select");
 				return;
-			}
-        }
+			    }
+            }
 
-        servicedatabase.addAnimal(homeAnimal);
-		System.out.println("Animal added to the database");
+            if (id > 0 && !name.isEmpty() && !color.isEmpty() && date_birth != null && !commands.isEmpty()) {
+                servicedatabase.addAnimal(homeAnimal);
+                count.add(); // Increment the counter when a new animal is added
+                System.out.println("Animal added to the database");
+            } else {
+                System.out.println("Error: Not all fields are filled. Please fill all fields and try again.");
+            }
 
         } else if(type.equals("2")){
             System.out.println("Enter id animal:");
@@ -112,8 +119,8 @@ public class DataController {
             int animalClass = scanner.nextInt();
             scanner.nextLine();
 
-        PackAnimals packAnimal;
-		switch (animalClass) {
+            PackAnimals packAnimal;
+		    switch (animalClass) {
 
             case 4 -> packAnimal = new Donkey(id, name, color, date_birth, commands);
 			case 5 -> packAnimal = new Horse(id, name, color, date_birth, commands);
@@ -121,14 +128,22 @@ public class DataController {
             default -> {
 				System.out.println("Error incorect select");
 				return;
-			}
-		}
+			    }
+		    }
 
-		servicedatabase.addAnimal(packAnimal);
-		System.out.println("Animals complete to add database");
+            if (id > 0 && !name.isEmpty() && !color.isEmpty() && date_birth != null && !commands.isEmpty()) {
+                servicedatabase.addAnimal(packAnimal);
+                count.add(); // Increment the counter when a new animal is added
+                System.out.println("Animals complete to add database");
+            } else {
+                System.out.println("Error: Not all fields are filled. Please fill all fields and try again.");
+            }
 
         } else {
             System.out.println("Error incorrect select type of animal");
+        }
+        } catch (Exception e) {
+            System.out.println("Error closing the Counter object: " + e.getMessage());
         }
 
     }
