@@ -4,7 +4,8 @@ Hamster,3,final,red,11.11.1111,seccess?,testing,final test
 Dog,4,thes final test home,green,03.10.3335,tecting run, testing jump,tcting sleep,final test4
 Donkey,5,testing pack,pack,30.11.0002,test1 test2 test3,tsting date,test and, test and, testing
 Hamster,6,count home,test1,20.05.2004,nedd rest
-Camel,7,pack count,fix,30.10.2222,zer, zer ka, zer1
+Camel,7,pack count,fix,30.10.2222,zer, zer ka, zer1,7894
 Donkey,15,Eeee,flaf,15.08.2257,qwer
 Cat,13,z,z,13.01.1314,z,check id
 Hamster,8,set name,set color,16.07.7783,set commands,set good
+Cat,9,test logs,logs color,19.10.8086,losg com
