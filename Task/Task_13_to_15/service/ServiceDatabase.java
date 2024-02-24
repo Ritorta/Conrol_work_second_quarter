@@ -37,51 +37,27 @@ public class ServiceDatabase {
         
     }
 
-    // private void saveDatabase(){
-    //     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-    //         for(Animal animal : animals) {
-    //             int id = animal.getId();
-                
-    //             if (animal instanceof HomeAnimals) {
-    //                 HomeAnimals homeAnimal = (HomeAnimals) animal;
-    //                 String line = "HomeAnimal id: " + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + homeAnimal.getDate_birth() + ", " +
-    //                 String.join(",", homeAnimal.getCommands());
-    //                 writer.write(line);
-	// 				writer.newLine();
-    //             } else if (animal instanceof PackAnimals) {
-    //                 PackAnimals packAnimal = (PackAnimals) animal;
-    //                 String line = "PackAnimal," + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + packAnimal.getDate_birth() + ", " +
-    //                 String.join(",", packAnimal.getCommands());
-    //                 writer.write(line);
-	// 				writer.newLine();
-    //             } else {
-    //                 System.out.println("Incorrect animal type: " + id);
-    //             }  
-    //         }
-    //     } catch (IOException e) {
-    //         System.out.println("Error save Database: " + e.getMessage());
-    //     }
-    // }
-    
 	private void saveDatabase() {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 			for (Animal animal : animals) {
+				String className = animal.getClass().getSimpleName();
 				int id = animal.getId();
 	
 				if (animal instanceof HomeAnimals) {
 					HomeAnimals homeAnimal = (HomeAnimals) animal;
-					String line = "HomeAnimal," + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + homeAnimal.getDate_birth() + ", " +
-							String.join(",", homeAnimal.getCommands());
+					String line = className + "," + id + "," + homeAnimal.getName() + "," + homeAnimal.getColor() + "," + sdf.format(homeAnimal.getDate_birth()) + "," +
+							String.join(", ", homeAnimal.getCommands());
 					writer.write(line);
 					writer.newLine();
 				} else if (animal instanceof PackAnimals) {
 					PackAnimals packAnimal = (PackAnimals) animal;
-					String line = "PackAnimal," + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + packAnimal.getDate_birth() + ", " +
+					String line = className + "," + id + "," + packAnimal.getName() + "," + packAnimal.getColor() + "," + sdf.format(packAnimal.getDate_birth()) + "," +
 							String.join(",", packAnimal.getCommands());
 					writer.write(line);
 					writer.newLine();
 				} else {
-					System.out.println("Incorrect animal type: " + id);
+					System.out.println("Incorrect animal type: " + className);
 				}
 			}
 			System.out.println("Database save complete.");
@@ -107,7 +83,7 @@ public class ServiceDatabase {
                     System.out.println("Error parsing date: " + data[4]);
                     continue;
                 }
-					String commands = String.join(",", Arrays.copyOfRange(data, 6, data.length));
+					String commands = String.join(",", Arrays.copyOfRange(data, 5, data.length));
 
 					Animal animal;
 					switch (className) {
@@ -139,15 +115,25 @@ public class ServiceDatabase {
         saveDatabase();
     }
 
-    public void displayAnimalCommands(int id) {
-        for (Animal animal : animals) {
-        if (animal.getId() == id) {
-                animal.displayCommands();
-                return;
-            }
-        }
-        System.out.println("Amimals id " + id + " not found.");
-    }
+    // public void displayAnimalCommands(int id) {
+    //     for (Animal animal : animals) {
+    //     if (animal.getId() == id) {
+    //             animal.displayCommands();
+    //             return;
+    //         }
+    //     }
+    //     System.out.println("Amimals id " + id + " not found.");
+    // }
+
+	public void displayAnimalCommands(int id) {
+		for (Animal animal : animals) {
+			if (animal.getId() == id) {
+				animal.displayCommands();
+				return;
+			}
+		}
+		System.out.println("Animal with ID " + id + " not found.");
+	}
     
     public void displayAllAnimals() {
 		try {
@@ -165,7 +151,7 @@ public class ServiceDatabase {
 		}
 	}
 
-    public void NewCommand(int id, String command) {
+	public void NewCommand(int id, String command) {
 		for (Animal animal : animals) {
 			if (animal.getId() == id) {
 				String[] commands = command.split(",");
@@ -181,7 +167,7 @@ public class ServiceDatabase {
 		}
 		System.out.println("Animals id " + id + " not found.");
 	}
-
+}
     	
 
-}
+
