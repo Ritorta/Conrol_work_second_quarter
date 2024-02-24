@@ -115,16 +115,6 @@ public class ServiceDatabase {
         saveDatabase();
     }
 
-    // public void displayAnimalCommands(int id) {
-    //     for (Animal animal : animals) {
-    //     if (animal.getId() == id) {
-    //             animal.displayCommands();
-    //             return;
-    //         }
-    //     }
-    //     System.out.println("Amimals id " + id + " not found.");
-    // }
-
 	public void displayAnimalCommands(int id) {
 		for (Animal animal : animals) {
 			if (animal.getId() == id) {
