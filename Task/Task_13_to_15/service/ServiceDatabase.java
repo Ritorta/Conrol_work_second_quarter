@@ -23,7 +23,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.Date;
+import java.util.HashSet;
 
 public class ServiceDatabase {
 
@@ -38,9 +40,16 @@ public class ServiceDatabase {
 	private void saveDatabase() {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+			Set<Integer> Set = new HashSet<>();
+
 			for (Animal animal : animals) {
 				String className = animal.getClass().getSimpleName();
 				int id = animal.getId();
+
+				if (!Set.add(id)) {
+					System.out.println("Error: Duplicate ID " + id + " found. Skipping animal.");
+					continue;
+				}
 	
 				if (animal instanceof HomeAnimals) {
 					HomeAnimals homeAnimal = (HomeAnimals) animal;
