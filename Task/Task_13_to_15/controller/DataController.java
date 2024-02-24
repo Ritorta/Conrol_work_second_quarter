@@ -1,7 +1,5 @@
 package Task.Task_13_to_15.controller;
 
-import java.util.Scanner;
-
 import Task.Task_13_to_15.data.Camel;
 import Task.Task_13_to_15.data.Cat;
 import Task.Task_13_to_15.data.Dog;
@@ -12,6 +10,7 @@ import Task.Task_13_to_15.data.Horse;
 import Task.Task_13_to_15.data.PackAnimals;
 import Task.Task_13_to_15.service.ServiceDatabase;
 
+import java.util.Scanner;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.InputMismatchException;
@@ -23,7 +22,6 @@ public class DataController {
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
     private static Date date_birth = null;
     
-
     public DataController(ServiceDatabase servicedatabase){
         this.servicedatabase = servicedatabase;
         scanner = new Scanner(System.in);
@@ -63,23 +61,23 @@ public class DataController {
         String type = scanner.nextLine();
         
         if(type.equals("1")){
-        System.out.println("Enter id animal:");
-		int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter name animal:");
-		String name = scanner.nextLine();
-        System.out.println("Enter color animal:");
-		String color = scanner.nextLine();
-        System.out.println("Enter date_birth animal:");
-		date_birth = parseDate(scanner.nextLine());
-		System.out.println("Enter command animal:");
-		String commands = scanner.nextLine();
+            System.out.println("Enter id animal:");
+            int id = Integer.parseInt(scanner.nextLine());
+            System.out.println("Enter name animal:");
+            String name = scanner.nextLine();
+            System.out.println("Enter color animal:");
+            String color = scanner.nextLine();
+            System.out.println("Enter date_birth animal:");
+            date_birth = parseDate(scanner.nextLine());
+            System.out.println("Enter command animal:");
+            String commands = scanner.nextLine();
 
-		System.out.println("Select animals to add: ");
-		System.out.println("1. Dog");
-		System.out.println("2. Cat");
-		System.out.println("3. Hamster");
-		int animalClass = scanner.nextInt();
-		scanner.nextLine();
+            System.out.println("Select animals to add: ");
+            System.out.println("1. Dog");
+            System.out.println("2. Cat");
+            System.out.println("3. Hamster");
+            int animalClass = scanner.nextInt();
+            scanner.nextLine();
 
 		HomeAnimals homeAnimal;
 		switch (animalClass) {
@@ -96,23 +94,24 @@ public class DataController {
 		System.out.println("Animal added to the database");
 
         } else if(type.equals("2")){
-        System.out.println("Enter id animal:");
-		int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter name animal:");
-		String name = scanner.nextLine();
-        System.out.println("Enter color animal:");
-		String color = scanner.nextLine();
-        System.out.println("Enter date_birth animal:");
-		date_birth = parseDate(scanner.nextLine());
-		System.out.println("Enter command animal:");
-		String commands = scanner.nextLine();
+            System.out.println("Enter id animal:");
+            int id = Integer.parseInt(scanner.nextLine());
+            System.out.println("Enter name animal:");
+            String name = scanner.nextLine();
+            System.out.println("Enter color animal:");
+            String color = scanner.nextLine();
+            System.out.println("Enter date_birth animal:");
+            date_birth = parseDate(scanner.nextLine());
+            System.out.println("Enter command animal:");
+            String commands = scanner.nextLine();
 
-		System.out.println("Select animals to add: ");
-		System.out.println("4. Donkey");
-		System.out.println("5. Horse");
-        System.out.println("6. Camel");
-		int animalClass = scanner.nextInt();
-		scanner.nextLine();
+            System.out.println("Select animals to add: ");
+            System.out.println("4. Donkey");
+            System.out.println("5. Horse");
+            System.out.println("6. Camel");
+            int animalClass = scanner.nextInt();
+            scanner.nextLine();
+
         PackAnimals packAnimal;
 		switch (animalClass) {
 
@@ -127,8 +126,9 @@ public class DataController {
 
 		servicedatabase.addAnimal(packAnimal);
 		System.out.println("Animals complete to add database");
+
         } else {
-        System.out.println("Error incorrect select type of animal");
+            System.out.println("Error incorrect select type of animal");
         }
 
     }

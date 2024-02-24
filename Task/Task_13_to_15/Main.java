@@ -10,5 +10,4 @@ public class Main {
         DataController menu = new DataController(database);
         menu.consoleMenu();
     }
-
 }

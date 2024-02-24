@@ -1,3 +1,5 @@
 Dog,1,blat,red,12.12.2000,siut,sleep,ooo,ppppp
 Horse,2,Rita,orenge,31.10.1991,rage,good girl
-Hamster,3,final,red,11.11.1111,seccess?
+Hamster,3,final,red,11.11.1111,seccess?,testing
+Dog,4,thes final test home,green,03.10.3335,tecting run, testing jump,tcting sleep
+Donkey,5,testing pack,pack,30.11.0002,test1 test2 test3,tsting date

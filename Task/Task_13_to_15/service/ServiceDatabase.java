@@ -1,4 +1,15 @@
 package Task.Task_13_to_15.service;
+
+import Task.Task_13_to_15.data.Animal;
+import Task.Task_13_to_15.data.Camel;
+import Task.Task_13_to_15.data.Cat;
+import Task.Task_13_to_15.data.Dog;
+import Task.Task_13_to_15.data.Donkey;
+import Task.Task_13_to_15.data.Hamster;
+import Task.Task_13_to_15.data.HomeAnimals;
+import Task.Task_13_to_15.data.Horse;
+import Task.Task_13_to_15.data.PackAnimals;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,27 +25,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Date;
 
-import Task.Task_13_to_15.data.Animal;
-import Task.Task_13_to_15.data.Camel;
-import Task.Task_13_to_15.data.Cat;
-import Task.Task_13_to_15.data.Dog;
-import Task.Task_13_to_15.data.Donkey;
-import Task.Task_13_to_15.data.Hamster;
-import Task.Task_13_to_15.data.HomeAnimals;
-import Task.Task_13_to_15.data.Horse;
-import Task.Task_13_to_15.data.PackAnimals;
-
-
 public class ServiceDatabase {
 
     private final List<Animal> animals;
     private static final String filePath = "Task/Task_13_to_15/data/Database.txt";
     
-
     public ServiceDatabase(){
         animals = new ArrayList<>();
-        loadDatabase();
-        
+        loadDatabase();      
     }
 
 	private void saveDatabase() {

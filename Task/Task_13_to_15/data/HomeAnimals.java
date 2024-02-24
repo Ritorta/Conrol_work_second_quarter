@@ -48,6 +48,4 @@ public abstract class HomeAnimals extends Animal {
     public void setCommands(String commands) {
         this.commands = commands;
     }
-
-    
 }

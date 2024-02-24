@@ -48,5 +48,4 @@ public abstract class PackAnimals extends Animal {
     public void setCommands(String commands) {
         this.commands = commands;
     }
-   
 }
