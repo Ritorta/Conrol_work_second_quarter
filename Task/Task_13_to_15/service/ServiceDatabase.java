@@ -37,13 +37,19 @@ public class ServiceDatabase {
         animals = new ArrayList<>();
         loadDatabase();      
     }
-	// Old metod saveDataBase, work
+
+	public void addAnimal(Animal animal){
+        animals.add(animal);
+        saveDatabase();
+    }
+
+	// Сохранение в базу данных
 	private void saveDatabase() {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 			Set<Integer> Set = new HashSet<>();
 
-			String header = "Animal Type, ID, Name, Color, Date of Birth, Commands";
+			String header = "Animal type, ID, Name, Color, Date of Birth, Commands";
         	writer.write(header);
         	writer.newLine();
 
@@ -58,14 +64,14 @@ public class ServiceDatabase {
 	
 				if (animal instanceof HomeAnimals) {
 					HomeAnimals homeAnimal = (HomeAnimals) animal;
-					String line = className + ", " + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + sdf.format(homeAnimal.getDate_birth()) + ", " +
-							String.join(", ", homeAnimal.getCommands());
+					String line = className + "," + id + "," + homeAnimal.getName() + "," + homeAnimal.getColor() + "," + sdf.format(homeAnimal.getDate_birth()) + "," +
+							String.join("", homeAnimal.getCommands());
 					writer.write(line);
 					writer.newLine();
 				} else if (animal instanceof PackAnimals) {
 					PackAnimals packAnimal = (PackAnimals) animal;
-					String line = className + ", " + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + sdf.format(packAnimal.getDate_birth()) + ", " +
-							String.join(", ", packAnimal.getCommands());
+					String line = className + "," + id + "," + packAnimal.getName() + "," + packAnimal.getColor() + "," + sdf.format(packAnimal.getDate_birth()) + "," +
+							String.join("", packAnimal.getCommands());
 					writer.write(line);
 					writer.newLine();
 				} else {
@@ -78,7 +84,7 @@ public class ServiceDatabase {
 		}
 	}
 
-	// Old metod loadDataBase, work
+	// Загрузка из базы данных
     private void loadDatabase() {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 			reader.readLine();
@@ -125,7 +131,7 @@ public class ServiceDatabase {
 		}
 	}
 
-	// New saveDatabase, WARNING bigs!
+	// New saveDatabase
 	// private void saveDatabase() {
     // try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
     //     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -164,7 +170,7 @@ public class ServiceDatabase {
 	// 	}
 	// }
 	
-	// New loadDatabase, WRNING bigs!
+	// New loadDatabase
 	// private void loadDatabase() {
 	// 	try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 	// 		reader.readLine();
@@ -213,12 +219,7 @@ public class ServiceDatabase {
 	// 	}
 	// }
 	
-
-    public void addAnimal(Animal animal){
-        animals.add(animal);
-        saveDatabase();
-    }
-
+	// Вывод списка команд животного по id
 	public void displayAnimalCommands(int id) {
 		for (Animal animal : animals) {
 			if (animal.getId() == id) {
@@ -228,7 +229,7 @@ public class ServiceDatabase {
 		}
 		System.out.println("Animal with ID " + id + " not found.");
 	}
-    
+    // Вывод списка всех животных
     public void displayAllAnimals() {
 		try {
 			File file = new File(filePath);
@@ -244,7 +245,7 @@ public class ServiceDatabase {
 			System.out.println("DataBase file not found.");
 		}
 	}
-
+	// Добавление новой команды для животного по id
 	public void NewCommand(int id, String command) {
 		for (Animal animal : animals) {
 			if (animal.getId() == id) {

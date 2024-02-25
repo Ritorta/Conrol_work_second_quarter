@@ -27,7 +27,7 @@ public class DataController {
         this.servicedatabase = servicedatabase;
         scanner = new Scanner(System.in);
     }
-
+    // Меню
     public void consoleMenu() {
         while(true) {
             try {
@@ -56,7 +56,7 @@ public class DataController {
             }
         }
     }
-
+    // Кнопка добавления животного
     private void addNewAnimal() {
         try(ServiceCounter count = new ServiceCounter()) {
         System.out.println("Enter type animal, 1 - Home Animals, 2 - Pack Animals");
@@ -94,7 +94,7 @@ public class DataController {
 
             if (id > 0 && !name.isEmpty() && !color.isEmpty() && date_birth != null && !commands.isEmpty()) {
                 servicedatabase.addAnimal(homeAnimal);
-                count.add(); // Increment the counter when a new animal is added
+                count.add();
                 System.out.println("Animal added to the database");
             } else {
                 System.out.println("Error: Not all fields are filled. Please fill all fields and try again.");
@@ -133,7 +133,7 @@ public class DataController {
 
             if (id > 0 && !name.isEmpty() && !color.isEmpty() && date_birth != null && !commands.isEmpty()) {
                 servicedatabase.addAnimal(packAnimal);
-                count.add(); // Increment the counter when a new animal is added
+                count.add();
                 System.out.println("Animals complete to add database");
             } else {
                 System.out.println("Error: Not all fields are filled. Please fill all fields and try again.");
@@ -147,7 +147,7 @@ public class DataController {
         }
 
     }
-
+    // Кнопка показать команды животного выбраного по id
     private void displayAnimalCommands() {
 		System.out.println("Enter id animals: ");
 		int id = Integer.parseInt(scanner.nextLine());
@@ -155,7 +155,7 @@ public class DataController {
         ServiceDatabase serviceDatabase = new ServiceDatabase();
 		serviceDatabase.displayAnimalCommands(id);
 	}
-
+    //Кнопка добавления новой команды для животного
     private void NewCommand() {
 		System.out.println("Enter id animal:");
 		int id = Integer.parseInt(scanner.nextLine());
@@ -165,7 +165,7 @@ public class DataController {
 		servicedatabase.NewCommand(id, command);
 		System.out.println("Commands add sucess.");
 	}
-
+    
     private static Date parseDate(String date) {
         try {
             java.util.Date utilDate = sdf.parse(date);
