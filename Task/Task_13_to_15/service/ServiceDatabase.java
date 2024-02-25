@@ -43,6 +43,10 @@ public class ServiceDatabase {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 			Set<Integer> Set = new HashSet<>();
 
+			String header = "Animal Type, ID, Name, Color, Date of Birth, Commands";
+        	writer.write(header);
+        	writer.newLine();
+
 			for (Animal animal : animals) {
 				String className = animal.getClass().getSimpleName();
 				int id = animal.getId();
@@ -54,14 +58,14 @@ public class ServiceDatabase {
 	
 				if (animal instanceof HomeAnimals) {
 					HomeAnimals homeAnimal = (HomeAnimals) animal;
-					String line = className + "," + id + "," + homeAnimal.getName() + "," + homeAnimal.getColor() + "," + sdf.format(homeAnimal.getDate_birth()) + "," +
+					String line = className + ", " + id + ", " + homeAnimal.getName() + ", " + homeAnimal.getColor() + ", " + sdf.format(homeAnimal.getDate_birth()) + ", " +
 							String.join(", ", homeAnimal.getCommands());
 					writer.write(line);
 					writer.newLine();
 				} else if (animal instanceof PackAnimals) {
 					PackAnimals packAnimal = (PackAnimals) animal;
-					String line = className + "," + id + "," + packAnimal.getName() + "," + packAnimal.getColor() + "," + sdf.format(packAnimal.getDate_birth()) + "," +
-							String.join(",", packAnimal.getCommands());
+					String line = className + ", " + id + ", " + packAnimal.getName() + ", " + packAnimal.getColor() + ", " + sdf.format(packAnimal.getDate_birth()) + ", " +
+							String.join(", ", packAnimal.getCommands());
 					writer.write(line);
 					writer.newLine();
 				} else {
@@ -71,6 +75,53 @@ public class ServiceDatabase {
 			System.out.println("Database save complete.");
 		} catch (IOException e) {
 			System.out.println("Error saving database: " + e.getMessage());
+		}
+	}
+
+	// Old metod loadDataBase, work
+    private void loadDatabase() {
+		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+			reader.readLine();
+					
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+				if (data.length >= 6) {
+					String className = data[0];
+                    int id = Integer.parseInt(data[1]);
+					String name = data[2];
+                    String color = data[3];
+                    Date date_birth;
+                try {
+                    date_birth = new SimpleDateFormat("dd.MM.yyyy").parse(data[4]);
+                } catch (ParseException e) {
+                    System.out.println("Error parsing date: " + data[4]);
+                    continue;
+                }
+					String commands = String.join(",", Arrays.copyOfRange(data, 5, data.length));
+
+					Animal animal;
+					switch (className) {
+						case "Dog" -> animal = new Dog(id, name, color, date_birth, commands);
+						case "Cat" -> animal = new Cat(id, name, color, date_birth, commands);
+						case "Hamster" -> animal = new Hamster(id, name, color, date_birth, commands);
+
+                        case "Camel" -> animal = new Camel(id, name, color, date_birth, commands);
+						case "Donkey" -> animal = new Donkey(id, name, color, date_birth, commands);
+						case "Horse" -> animal = new Horse(id, name, color, date_birth, commands);
+						default -> {
+							System.out.println("Unknown animal class: " + className);
+							continue;
+						}
+					}
+					animals.add(animal);
+				} else {
+					System.out.println("Invalid data in file: " + line);
+				}
+			}
+			System.out.println("Database load complete.");
+		} catch (IOException e) {
+			System.out.println("Error read database: " + e.getMessage());
 		}
 	}
 
@@ -113,61 +164,16 @@ public class ServiceDatabase {
 	// 	}
 	// }
 	
-	// Old metod saveDataBase, work
-    private void loadDatabase() {
-		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-			reader.readLine();
-			
-			String line;
-			while ((line = reader.readLine()) != null) {
-				String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-				if (data.length >= 6) {
-					String className = data[0];
-                    int id = Integer.parseInt(data[1]);
-					String name = data[2];
-                    String color = data[3];
-                    Date date_birth;
-                try {
-                    date_birth = new SimpleDateFormat("dd.MM.yyyy").parse(data[4]);
-                } catch (ParseException e) {
-                    System.out.println("Error parsing date: " + data[4]);
-                    continue;
-                }
-					String commands = String.join(",", Arrays.copyOfRange(data, 5, data.length));
-
-					Animal animal;
-					switch (className) {
-						case "Dog" -> animal = new Dog(id, name, color, date_birth, commands);
-						case "Cat" -> animal = new Cat(id, name, color, date_birth, commands);
-						case "Hamster" -> animal = new Hamster(id, name, color, date_birth, commands);
-
-                        case "Camel" -> animal = new Camel(id, name, color, date_birth, commands);
-						case "Donkey" -> animal = new Donkey(id, name, color, date_birth, commands);
-						case "Horse" -> animal = new Horse(id, name, color, date_birth, commands);
-						default -> {
-							System.out.println("Unknown animal class: " + className);
-							continue;
-						}
-					}
-					animals.add(animal);
-				} else {
-					System.out.println("Invalid data in file: " + line);
-				}
-			}
-			System.out.println("Database load complete.");
-		} catch (IOException e) {
-			System.out.println("Error read database: " + e.getMessage());
-		}
-	}
-	
-	// New saveDatabase, WRNING bigs!
+	// New loadDatabase, WRNING bigs!
 	// private void loadDatabase() {
 	// 	try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 	// 		reader.readLine();
 	
 	// 		String line;
 	// 		while ((line = reader.readLine()) != null) {
-	// 			String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+	// 			// String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+	// 			String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")([^\"]*$)|\s|;)");
+
 	// 			if (data.length >= 6) {
 	// 				String className = data[0];
 	// 				int id = Integer.parseInt(data[1]);
