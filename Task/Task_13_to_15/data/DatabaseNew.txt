@@ -1,0 +1,3 @@
+Animal Type     ID    Name            Color      Date of Birth   Commands            
+Cat             1     qwer            asdf       01.11.1111      ,, erw, wefwe,, fd  
+Horse           2     Deny            Red        12.10.2011      Run, Stay           

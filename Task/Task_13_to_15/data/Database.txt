@@ -9,6 +9,6 @@ Horse, 7,  Select, White, 31.01.1999, Back
 Horse, 8,  Rita, Orange, 31.10.1991, Sleep, Eat
 Camel, 9,  Lilu, Brain-white, 31.10.2018, Go
 Camel, 10,  Boo, Braun-black, 21.07.2017, Stay
-Donkey, 11,  Ia, Grey, 15.06.2014, Cry
+Donkey, 11,  Ia, Grey, 15.06.2014, Cry, Stay
 Donkey, 12,  Hvoa, black, 24.08.2001, Stoped
 Horse, 13, Lycku, Red, 13.12.2013, Luck, Stoped, Game
