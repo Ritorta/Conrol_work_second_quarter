@@ -242,6 +242,7 @@ public class ServiceDatabase {
 	/* Новая версия метода NewCommand,
 	- Сохранение без дублирования пробелов.
 	- Добавляет пробел после запятой в самом начале.
+	С новыми методами плодит запятые...
 	*/
 	public void NewCommand(int id, String command) {
 		for (Animal animal : animals) {
