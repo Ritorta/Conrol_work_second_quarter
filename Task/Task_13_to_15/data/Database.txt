@@ -5,10 +5,9 @@ Dog             3     Sharik             Braun                11.01.2020      Sa
 Dog             4     Snowball           White                11.04.2019      Sit                 
 Hamster         5     Hrome              Black-White          11.04.2023      Run                 
 Hamster         6     Homa               White                11.01.2022      Stay                
-Horse           7     Select             White                31.01.1999      Black               
+Horse           7     Select             White                31.01.1999      Back               
 Horse           8     Rita               Orange               31.10.1991      Sleep, Eat    
 Camel           9     Lilu               Brain-White          31.10.2018      Go                  
 Camel           10    Boo                Braun-Black          21.07.2017      Stay                
 Donkey          11    Ia                 Grey                 15.06.2014      Cry                 
-Donkey          12    Hova               Black                24.08.2001      Stooped             
-            
+Donkey          12    Hova               Black                24.08.2001      Stooped
