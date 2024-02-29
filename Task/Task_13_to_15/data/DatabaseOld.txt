@@ -1,0 +1,14 @@
+Type, ID, Name, Color, Date of Birth, Commands
+Cat, 1,  Myrsic, White, 11.06.2021, Dont Mya
+Cat, 2,  Vaska, Orange, 19.02.2016, Commone
+Dog, 3,  Sharik, Braun, 11.01.2020, Say Gav
+Dog, 4,  Snowball, White, 11.04.2019, Sit
+Hamster, 5,  Hrome, Black-White, 11.04.2023, Run
+Hamster, 6,  Homa, White, 11.01.2022, Stay
+Horse, 7,  Select, White, 31.01.1999, Back
+Horse, 8,  Rita, Orange, 31.10.1991, Sleep, Eat
+Camel, 9,  Lilu, Brain-white, 31.10.2018, Go
+Camel, 10,  Boo, Braun-black, 21.07.2017, Stay
+Donkey, 11,  Ia, Grey, 15.06.2014, Cry, Stay
+Donkey, 12,  Hvoa, black, 24.08.2001, Stoped
+Horse, 13, Lycku, Red, 13.12.2013, Luck, Stoped, Game
